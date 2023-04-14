@@ -1,68 +1,87 @@
 #include <stdio.h>
+#include <ctype.h>
 #include <string.h>
 
 int main()
 {
-    char nome[100], referencia[20], token[20];
-    int i, j = 0;
+    char nome[100];
+    char nomeFormat[100];
+    int count[2];
+    int j = 0;
 
-    // solicita o nome completo do usuário
-    printf("Digite o nome completo: ");
+    printf("Digite um nome: ");
     fgets(nome, 100, stdin);
-    nome[strcspn(nome, "\n")] = 0;
 
-    // gera a referência
-    referencia[0] = nome[strlen(nome) - 1];
-    referencia[1] = '.';
-    j = 2;
-    for (i = 0; i < strlen(nome); i++)
+    for (int i = 0; i < strlen(nome); i++)
     {
         if (nome[i] == ' ')
         {
-            referencia[j] = nome[i + 1];
-            referencia[j + 1] = '.';
-            j += 2;
+            count[j++] = i;
         }
     }
-    referencia[j] = '\0';
-
-    // gera o token
-    j = 0;
-    for (i = strlen(referencia) - 1; i >= 0; i--)
+    for (int i = count[--j] + 1; i < strlen(nome) - 1; i++)
     {
-        if (referencia[i] != ' ' && referencia[i] != '.')
+        printf("%c", toupper(nome[i]));
+        if (i == strlen(nome) - 2)
         {
-            if (referencia[i] == 'A' || referencia[i] == 'a')
+            printf(" %c. ", toupper(nome[0]));
+            for (int x = count[j - j] + 1; x < count[j - j] + 2; x++)
             {
-                token[j] = '6';
+                printf("%c.", toupper(nome[x]));
             }
-            else if (referencia[i] == 'E' || referencia[i] == 'e')
+        }
+    }
+
+    printf("\n");
+
+    for (int i = count[j] + 1; i < strlen(nome) - 1; i++)
+    {
+        printf("%c", toupper(nome[i]));
+        if (i == strlen(nome) - 2)
+        {
+            printf("%c", toupper(nome[0]));
+            for (int x = count[j - j] + 1; x < count[j - j] + 2; x++)
             {
-                token[j] = '7';
+                printf("%c", toupper(nome[x]));
             }
-            else if (referencia[i] == 'I' || referencia[i] == 'i')
+        }
+    }
+
+    printf("\n");
+
+    for (int i = count[j] + 1; i < strlen(nome) - 1; i++)
+    {
+        if (toupper(nome[i]) == 'A' || toupper(nome[i]) == 'E' || toupper(nome[i]) == 'I' || toupper(nome[i]) == 'O' || toupper(nome[i]) == 'U')
+        {
+            printf("%d", toupper(nome[i]));
+        }
+        else
+        {
+            printf("%c", toupper(nome[i]));
+        }
+
+        if (i == strlen(nome) - 2)
+        {
+            if (toupper(nome[0]) == 'A' || toupper(nome[0]) == 'E' || toupper(nome[0]) == 'I' || toupper(nome[0]) == 'O' || toupper(nome[0]) == 'U')
             {
-                token[j] = '8';
-            }
-            else if (referencia[i] == 'O' || referencia[i] == 'o')
-            {
-                token[j] = '9';
-            }
-            else if (referencia[i] == 'U' || referencia[i] == 'u')
-            {
-                token[j] = '0';
+                printf("%d", toupper(nome[i]));
             }
             else
             {
-                token[j] = referencia[i];
+                printf("%c", toupper(nome[i]));
             }
-            j++;
+
+            for (int x = count[j - j] + 1; x < count[j - j] + 2; x++)
+            {
+                if (toupper(nome[x]) == 'A' || toupper(nome[x]) == 'E' || toupper(nome[x]) == 'I' || toupper(nome[x]) == 'O' || toupper(nome[x]) == 'U')
+                {
+                    printf("%d", toupper(nome[x]));
+                }
+                else
+                {
+                    printf("%c", toupper(nome[x]));
+                }
+            }
         }
     }
-    token[j] = '\0';
-
-    // exibe a referência e o token gerados
-    printf("\nReferência: %s\nToken: %s\n", referencia, token);
-
-    return 0;
 }
