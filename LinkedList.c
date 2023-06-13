@@ -1,20 +1,14 @@
-/*
-	Autor: CAIO OLIVEIRA MARQUES
-	Projeto: construÁ„o de uma lista ligada com v·rias operaÁıes
-*/
-
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
 
-// definiÁ„o do tipo elemento, que tem o valor (no caso inteiro) e aponta para um prÛximo elemento
+// defini√ß√£o do tipo elemento, que tem o valor (no caso inteiro) e aponta para um pr√≥ximo elemento
 typedef struct Elemento{
 	struct Elemento *proximo;
 	int valor;
 } Elemento;
 
-// declaraÁ„o de todas as funÁıes que ser„o implementadas posteriomente
+// declara√ß√£o de todas as fun√ß√µes que ser√£o implementadas posteriomente
 Elemento *criarElemento(int valor);
 Elemento *adicionarElementoFinal(int valor, Elemento *lista);
 Elemento *adicionarElementoInicio(int valor, Elemento *lista);
@@ -27,13 +21,13 @@ int contarElementos(Elemento *lista);
 void imprimeNumeroNaPosicao(Elemento *lista, int posicao);
 
 int main(){
-	// declaraÁ„o das vari·veis que v„o ser usadas no programa
+	// declara√ß√£o das vari√°veis que v√£o ser usadas no programa
 	int escolha, numeroInicial, i, n, quantidade;
 	Elemento *lista;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	// menu inicial, com apenas duas opÁıes
+	// menu inicial, com apenas duas op√ß√µes
 	printf("====== LISTA LIGADA ========\n\n");
 	printf("1) Criar lista\n");
 	printf("2) Sair do programa\n\n");
@@ -43,8 +37,8 @@ int main(){
 	
 	switch (escolha){
 		case 1: 
-			// pedir o primeiro n˙mero que vai comeÁar a lista
-			printf("Digite o n˙mero inicial: ");
+			// pedir o primeiro n√∫mero que vai come√ßar a lista
+			printf("Digite o n√∫mero inicial: ");
 			scanf("%i", &numeroInicial);
 			fflush(stdin);
 			
@@ -55,108 +49,108 @@ int main(){
 			// terminando o programa
 			return 0;
 		default: 
-			// caso o usu·rio digite um n˙mero que n„o est· na lista de opÁıes, o programa È reiniciado
-			printf("N„o conseguimos entender... tente novamente\n\n");
+			// caso o usu√°rio digite um n√∫mero que n√£o est√° na lista de op√ß√µes, o programa √© reiniciado
+			printf("N√£o conseguimos entender... tente novamente\n\n");
 			system("PAUSE");
 			system("CLS");
 			main();
 			break;
 	}
 	
-	// agora È a segunda lista, que tem as opÁıes de manipulaÁ„o da lista j· criada anteriormente
+	// agora √© a segunda lista, que tem as op√ß√µes de manipula√ß√£o da lista j√° criada anteriormente
 	while(1){
-		// exibiÁ„o do menu
+		// exibi√ß√£o do menu
 		system("CLS");
 		printf("====== LISTA LIGADA ========\n\n");
-		printf("1) Adicionar elemento no inÌcio\n");
+		printf("1) Adicionar elemento no in√≠cio\n");
 		printf("2) Adicionar elemento no final\n");
-		printf("3) Adicionar elemento em qualquer posiÁ„o\n");
-		printf("4) Remover elemento no inÌcio\n");
+		printf("3) Adicionar elemento em qualquer posi√ß√£o\n");
+		printf("4) Remover elemento no in√≠cio\n");
 		printf("5) Remover elemento no final\n");
-		printf("6) Remover elemento em qualquer posiÁ„o\n");
+		printf("6) Remover elemento em qualquer posi√ß√£o\n");
 		printf("7) Imprimir a lista na tela\n");
 		printf("8) Contar quantos elementos tem na lista\n");
-		printf("9) procurar n˙mero por posiÁ„o\n");
+		printf("9) procurar n√∫mero por posi√ß√£o\n");
 		printf("10) Encerrar o programa\n\n");
 		
-		//capta a escolha do usu·rio
+		//capta a escolha do usu√°rio
 		printf("Digite a sua escolha: ");
 		scanf("%i", &escolha);
 		fflush(stdin);
 	
-		// verifica a escolha do usu·rio
+		// verifica a escolha do usu√°rio
 		switch (escolha){
 			case 1:
-				//adiciona um elemento digitado pelo usu·rio no inÌcio 
+				//adiciona um elemento digitado pelo usu√°rio no in√≠cio 
 				n = 0;
-				printf("Digite o n˙mero adicionado: ");
+				printf("Digite o n√∫mero adicionado: ");
 				scanf("%i", &n);
 				fflush(stdin);
 				lista = adicionarElementoInicio(n, lista);
 				break;
 			case 2:
-				//adiciona um elemento digitado pelo usu·rio no final
+				//adiciona um elemento digitado pelo usu√°rio no final
 				n = 0;
-				printf("Digite o n˙mero adicionado: ");
+				printf("Digite o n√∫mero adicionado: ");
 				scanf("%i", &n);
 				fflush(stdin);
 				lista = adicionarElementoFinal(n, lista);
 				break;
 			case 3:
-				// trecho de cÛdigo que capta qual o n˙mero que o usu·rio quer colocar na lista.
+				// trecho de c√≥digo que capta qual o n√∫mero que o usu√°rio quer colocar na lista.
 				n = 0;
-				puts("Digite o n˙mero adicionado: ");
+				puts("Digite o n√∫mero adicionado: ");
 				scanf("%i", &n);
 				fflush(stdin);
 				
-				// trecho de cÛdigo que capta em que posiÁ„o o usu·rio quer que o n˙mero seja adicionado na lista
+				// trecho de c√≥digo que capta em que posi√ß√£o o usu√°rio quer que o n√∫mero seja adicionado na lista
 				i = 0;
-				puts("Digite a posiÁ„o da lista que o n˙mero ser· adicionado: ");
+				puts("Digite a posi√ß√£o da lista que o n√∫mero ser√° adicionado: ");
 				scanf("%i", &i);
 				fflush(stdin);
 				
-				// chama a funÁ„o que È incumbida de fazer isso e termina a execuÁ„o do switch.
+				// chama a fun√ß√£o que √© incumbida de fazer isso e termina a execu√ß√£o do switch.
 				lista = adicionarElementoPosicao(lista, i, n);
 				break;				
 			case 4:
-				// chama a funÁ„o que remove um elemento no inÌcio
+				// chama a fun√ß√£o que remove um elemento no in√≠cio
 				lista = removerElementoNoInicio(lista);
 				break;
 			case 5:
-				// chama a funÁ„o que remove um elemento no final
+				// chama a fun√ß√£o que remove um elemento no final
 				lista = removerElementoNoFinal(lista);
 				break;
 			case 6:
-				// trecho de cÛdigo que capta a posiÁ„o da lista que o usu·rio quer que seja removida.	
+				// trecho de c√≥digo que capta a posi√ß√£o da lista que o usu√°rio quer que seja removida.	
 				i = 0;
-				printf("Digite a posiÁ„o da lista que o n˙mero ser· removido: ");
+				printf("Digite a posi√ß√£o da lista que o n√∫mero ser√° removido: ");
 				scanf("%i", &i);
 				fflush(stdin);
 				
 				lista = removerElementoPosicao(lista, i);
 				break;				
 			case 7:
-				// chama a funÁ„o que imprime todos os elementos da lista nesse formato: [1, 2, 3]
+				// chama a fun√ß√£o que imprime todos os elementos da lista nesse formato: [1, 2, 3]
 				imprimeLista(lista);
 				printf("\n\n");
-				// pausa a execuÁ„o do programa para o usu·rio conseguir ver o resultado.
+				// pausa a execu√ß√£o do programa para o usu√°rio conseguir ver o resultado.
 				system("PAUSE");
 				break;
 			case 8:
-				// retorna a quantidade de elementos que j· est„o dentro da lista
+				// retorna a quantidade de elementos que j√° est√£o dentro da lista
 				quantidade = contarElementos(lista);
-				// imprime o resultado e encerra a execuÁ„o do switch
-				printf("\n\nA quantidade de elementos na lista È: %i\n\n", quantidade);
+				// imprime o resultado e encerra a execu√ß√£o do switch
+				printf("\n\nA quantidade de elementos na lista √©: %i\n\n", quantidade);
 				system("PAUSE");
 				break;
 			case 9:
-				// trecho de cÛdigo que capta a posiÁ„o que o usu·rio quer que seja consultada dentro da lista
+				// trecho de c√≥digo que capta a posi√ß√£o que o usu√°rio quer que seja consultada dentro da lista
 				n = 0;
-				printf("Digite a posiÁ„o que vocÍ quer consultar: ");
+				printf("Digite a posi√ß√£o que voc√™ quer consultar: ");
 				scanf("%i", &n);
 				fflush(stdin);
 				
-				// chama a funÁ„o que faz isso passando como argumento o que o usu·rio escreveu.
+				// chama a fun√ß√£o que faz isso passando como argumento o que o usu√°rio escreveu.
 				imprimeNumeroNaPosicao(lista, n);
 				break;
 
@@ -164,8 +158,8 @@ int main(){
 				// finaliza o programa
 				return 0;
 			default: 
-				// caso o usu·rio tenha digitado uma opÁ„o que n„o est· no menu, explique para ele, e reinicia o programa
-				printf("N„o conseguimos entender... tente novamente\n\n");
+				// caso o usu√°rio tenha digitado uma op√ß√£o que n√£o est√° no menu, explique para ele, e reinicia o programa
+				printf("N√£o conseguimos entender... tente novamente\n\n");
 				system("PAUSE");
 				system("CLS");
 				continue;
@@ -173,26 +167,26 @@ int main(){
 	}
 }
 
-// devolve o n˙mero que est· na posiÁ„o da lista passadas como argumento.
+// devolve o n√∫mero que est√° na posi√ß√£o da lista passadas como argumento.
 void imprimeNumeroNaPosicao(Elemento *lista, int posicao){
-	// trecho de cÛdigo que verifica se a posiÁ„o passada pelo usu·rio existe dentro da lista
+	// trecho de c√≥digo que verifica se a posi√ß√£o passada pelo usu√°rio existe dentro da lista
 	int quantidadeElementos = contarElementos(lista);
 	if(quantidadeElementos <= posicao){
-		printf("N„o existe nenhum n˙mero nessa posiÁ„o...\n\n");
+		printf("N√£o existe nenhum n√∫mero nessa posi√ß√£o...\n\n");
 		system("PAUSE");
 		return 0;
 	}
 	
-	// declaraÁ„o de vari·veis
+	// declara√ß√£o de vari√°veis
 	int numero = 0;
 	Elemento *temp = lista;
 	int contador = 0;
 
-	// percorre a lista em busca do elemento na posiÁ„o passada como argumento
+	// percorre a lista em busca do elemento na posi√ß√£o passada como argumento
 	while(1){
-		// se o elemento n„o tiver um prÛximo (˙ltimo elemento da lista
-		// ou se o contador encontrou a posiÁ„o desejada, o n˙mero È o valor do elemento nessa posiÁ„o, 
-		//o laÁo È interrompido.	
+		// se o elemento n√£o tiver um pr√≥ximo (√∫ltimo elemento da lista
+		// ou se o contador encontrou a posi√ß√£o desejada, o n√∫mero √© o valor do elemento nessa posi√ß√£o, 
+		//o la√ßo √© interrompido.	
 		if(temp->proximo != NULL || contador == posicao){
 			numero = temp->valor;
 			break;
@@ -204,83 +198,83 @@ void imprimeNumeroNaPosicao(Elemento *lista, int posicao){
 	}
 	
 	//imprime o resultado na tela.
-	printf("\n\nO n˙mero que est· na posiÁ„o %i È: %i\n\n", posicao, numero);
+	printf("\n\nO n√∫mero que est√° na posi√ß√£o %i √©: %i\n\n", posicao, numero);
 	system("PAUSE");
 }
 
 
-// funÁ„o que recebe uma lista e um n˙mero que indica de qual posiÁ„o È o elemento que deve ser removido 
-// da lista, retorna uma vers„o da lista com esse elemento removido.
+// fun√ß√£o que recebe uma lista e um n√∫mero que indica de qual posi√ß√£o √© o elemento que deve ser removido 
+// da lista, retorna uma vers√£o da lista com esse elemento removido.
 Elemento *removerElementoPosicao(Elemento *lista, int posicao){
 	if(lista == NULL){
-		printf("N„o h· nenhum elemento nessa lista...\n\n");
+		printf("N√£o h√° nenhum elemento nessa lista...\n\n");
 		system("PAUSE");
 		return NULL;
 	}
 
-	// se a posiÁ„o passada È 0 a funÁ„o È delegada para outra, que remove o elemento da primeira posiÁ„o
+	// se a posi√ß√£o passada √© 0 a fun√ß√£o √© delegada para outra, que remove o elemento da primeira posi√ß√£o
 	if(posicao == 0) return removerElementoNoInicio(lista);
 
 	
 	Elemento *temp = lista, *removido;
 	int contador = 0;
 	
-	// percorre a lista atÈ chegar na posiÁ„o desejada
+	// percorre a lista at√© chegar na posi√ß√£o desejada
 	while(temp->proximo != NULL){
 		if(contador == posicao - 1){
-			// na posiÁ„o desejada deve-se trocar o ponteiro do anterior para o elemento a duas posiÁıes a frente dele, assim deixando o elemento do meio sem ninguÈm apontando para ele.
+			// na posi√ß√£o desejada deve-se trocar o ponteiro do anterior para o elemento a duas posi√ß√µes a frente dele, assim deixando o elemento do meio sem ningu√©m apontando para ele.
 			removido = temp->proximo;
 			temp->proximo = temp->proximo->proximo;
-			// libera a memÛria do objeto removido;
+			// libera a mem√≥ria do objeto removido;
 			free(removido);
 		}
 		temp = temp->proximo;
 		contador++;
 	}
-	// retorna a lista com o elemento da posiÁ„o passada j· removido
+	// retorna a lista com o elemento da posi√ß√£o passada j√° removido
 	return lista;
 }
 
 
-// adiciona um n˙mero na lista na posiÁıes passados pelo usu·rio (vale lembrar que a primeira posiÁ„o È 0
+// adiciona um n√∫mero na lista na posi√ß√µes passados pelo usu√°rio (vale lembrar que a primeira posi√ß√£o √© 0
 Elemento *adicionarElementoPosicao(Elemento *lista, int posicao, int valor){
-	// verifica se a posiÁ„o È 0 pois È sÛ usar outra funÁ„o que j· adiciona um n˙mero no inÌcio
+	// verifica se a posi√ß√£o √© 0 pois √© s√≥ usar outra fun√ß√£o que j√° adiciona um n√∫mero no in√≠cio
 	if(posicao == 0){
 		return adicionarElementoInicio(valor, lista);
 	}
 	
-	//protegendo o cÛdigo contra uma lista nula, exibindo uma mensagem para o usu·rio
+	//protegendo o c√≥digo contra uma lista nula, exibindo uma mensagem para o usu√°rio
 	if(lista == NULL){
-		printf("ImpossÌvel adicionar o elemento nessa posiÁ„o...\n\n");
+		printf("Imposs√≠vel adicionar o elemento nessa posi√ß√£o...\n\n");
 		system("PAUSE");
 		return NULL;		
 	} 
 	
-	// cria um elemento com o valor passado pelo usu·rio, cria um contador e uma vari·vel referÍncia temp
+	// cria um elemento com o valor passado pelo usu√°rio, cria um contador e uma vari√°vel refer√™ncia temp
 	Elemento *novo = criarElemento(valor);
 	int contador = 0;
 	Elemento *temp = lista;
 	
-	// percorre a funÁ„o atÈ o final ou atÈ o contador achar a posiÁ„o passada como argumento
+	// percorre a fun√ß√£o at√© o final ou at√© o contador achar a posi√ß√£o passada como argumento
 	while(temp->proximo != NULL){
-		// ao achar a posiÁ„o, trocam-se os ponteiros e termina a funÁ„o
+		// ao achar a posi√ß√£o, trocam-se os ponteiros e termina a fun√ß√£o
 		if(contador == posicao - 1){
 			novo->proximo = temp->proximo;
 			temp->proximo = novo;
 			break;
 		}
-		// caso ainda n„o se achou a posiÁ„o pedida para o usu·rio, aumenta um no contador e percorre o
-		//prÛximo elemento.
+		// caso ainda n√£o se achou a posi√ß√£o pedida para o usu√°rio, aumenta um no contador e percorre o
+		//pr√≥ximo elemento.
 		contador++;
 		temp = temp->proximo;
 	}
 	
-	// retorna a lista com o n˙mero adicionado
+	// retorna a lista com o n√∫mero adicionado
 	return lista;
 }
 
 int contarElementos(Elemento *lista){
-	// se n„o tiver nenhum elemento na lista, retorne 0
+	// se n√£o tiver nenhum elemento na lista, retorne 0
 	if(lista == NULL) return 0;
 
 	int quantidade = 1;
@@ -290,35 +284,35 @@ int contarElementos(Elemento *lista){
 		quantidade++;
 		temp = temp->proximo;
 	}
-	// no final retorne esse n˙mero.
+	// no final retorne esse n√∫mero.
 	return quantidade;
 }
 
-// funÁ„o que recebe o primeiro elemento de uma lista e retorna uma vers„o dela sem o ˙ltimo elemento
+// fun√ß√£o que recebe o primeiro elemento de uma lista e retorna uma vers√£o dela sem o √∫ltimo elemento
 Elemento *removerElementoNoFinal(Elemento *lista){
-	// se a lista estiver vazia deve-se retornar NULL e mostrar para o usu·rio.
+	// se a lista estiver vazia deve-se retornar NULL e mostrar para o usu√°rio.
 	if(lista == NULL){
-		printf("N„o foi possÌvel realizar a operaÁ„o...\n\n");
+		printf("N√£o foi poss√≠vel realizar a opera√ß√£o...\n\n");
 		system("PAUSE");
 		return NULL;
 	}
 	
 	Elemento *temp = lista;
 	
-	// percorrer a lista atÈ a vari·vel "temp" apontar para o pen˙ltimo elemento.
+	// percorrer a lista at√© a vari√°vel "temp" apontar para o pen√∫ltimo elemento.
 	for(temp = lista; temp->proximo->proximo != NULL; temp = temp->proximo);
 	
-	// ao descobrir o pen˙ltimo elemento da lista, o programa vai liberar o espaÁo do ˙ltimo, e vai trocar a referÍncia de "prÛximo" do pen˙ltimo para NULL
+	// ao descobrir o pen√∫ltimo elemento da lista, o programa vai liberar o espa√ßo do √∫ltimo, e vai trocar a refer√™ncia de "pr√≥ximo" do pen√∫ltimo para NULL
 	free(temp->proximo);
 	temp->proximo = NULL;
 	return lista;
 }
 
-// esse programa recebe o primeiro elemento de um lista e retorna uma vers„o da mesma sem o primeiro elemento
+// esse programa recebe o primeiro elemento de um lista e retorna uma vers√£o da mesma sem o primeiro elemento
 Elemento *removerElementoNoInicio(Elemento *lista){
-	// se a lista estiver vazia deve-se retornar NULL e mostrar para o usu·rio.
+	// se a lista estiver vazia deve-se retornar NULL e mostrar para o usu√°rio.
 	if(lista == NULL){
-		printf("N„o foi possÌvel realizar a operaÁ„o...\n\n");
+		printf("N√£o foi poss√≠vel realizar a opera√ß√£o...\n\n");
 		system("PAUSE");
 		return NULL;
 	}	
@@ -326,35 +320,35 @@ Elemento *removerElementoNoInicio(Elemento *lista){
 	Elemento *segundoElemento = lista->proximo;
 	
 	
-	// se sÛ tem um elemento, retorna nulo
+	// se s√≥ tem um elemento, retorna nulo
 	if(lista->proximo == NULL){
-		// libera o endereÁo da memÛria do primeiro elemento da lista e retorna uma lista vazia
+		// libera o endere√ßo da mem√≥ria do primeiro elemento da lista e retorna uma lista vazia
 
 		free(lista);
 		return NULL;	
 	} 
-	// se tiver 2 elementos ou mais, retorna o prÛximo elemento depois do primeiro
+	// se tiver 2 elementos ou mais, retorna o pr√≥ximo elemento depois do primeiro
 	else{
-		// libera o endereÁo da memÛria do primeiro elemento da lista e retorna o segundo.
+		// libera o endere√ßo da mem√≥ria do primeiro elemento da lista e retorna o segundo.
 		free(lista);
 		return segundoElemento;
 	}
 }
 
-// funÁ„o que recebe uma lista ligada e um n˙mero
-// e devolve uma vers„o desta lista com o n˙mero passado no final.
+// fun√ß√£o que recebe uma lista ligada e um n√∫mero
+// e devolve uma vers√£o desta lista com o n√∫mero passado no final.
 Elemento *adicionarElementoFinal(int valor, Elemento *lista){	
 	// cria um elemento com o valor passado
 	Elemento *novo;
 	novo = criarElemento(valor);
 	
-	// se a lista estiver vazia, apenas devolva o elemento digitado pelo usu·rio
+	// se a lista estiver vazia, apenas devolva o elemento digitado pelo usu√°rio
 	if(lista == NULL){
 		return novo;
 	}
 
-	// caso contr·rio percorra a lista atÈ achar o ˙ltimo elemento, colocando a vari·vel "prÛximo"
-	// dele como o elemento construÌdo com o valor passado na funÁ„o
+	// caso contr√°rio percorra a lista at√© achar o √∫ltimo elemento, colocando a vari√°vel "pr√≥ximo"
+	// dele como o elemento constru√≠do com o valor passado na fun√ß√£o
 	Elemento *temp = lista;
 	while(1){
 		if(temp->proximo){
@@ -362,21 +356,21 @@ Elemento *adicionarElementoFinal(int valor, Elemento *lista){
 		}
 		else{
 			temp->proximo = novo;
-			// retorna a lista com o novo n˙mero adicionado
+			// retorna a lista com o novo n√∫mero adicionado
 			return lista;	
 		}
 	}
 }
 
-// funÁ„o que recebe uma lista e um n˙mero, retornando uma vers„o da lista passada com o elemento passado
-// como argumento da funÁ„o como valor inicial dessa lista.
+// fun√ß√£o que recebe uma lista e um n√∫mero, retornando uma vers√£o da lista passada com o elemento passado
+// como argumento da fun√ß√£o como valor inicial dessa lista.
 Elemento *adicionarElementoInicio(int valor, Elemento *lista){
 	// criando um elemento com o valor passado como argumento
 	Elemento *novo = criarElemento(valor);
 
 	/*
-		caso a funÁ„o n„o esteja vazia, o programa vai usar o nodo passado como argumento para referenciar
-		a lista, e depois retornar· (se a lista passada for vazia, o programa sÛ ir· retornar o prÛprio
+		caso a fun√ß√£o n√£o esteja vazia, o programa vai usar o nodo passado como argumento para referenciar
+		a lista, e depois retornar√° (se a lista passada for vazia, o programa s√≥ ir√° retornar o pr√≥prio
 		nodo criado.
 	*/
 	
@@ -384,28 +378,28 @@ Elemento *adicionarElementoInicio(int valor, Elemento *lista){
 	return novo;
 }
 
-// funÁ„o que cria um nodo (apelidado nesse programa como "elemento", recebendo
+// fun√ß√£o que cria um nodo (apelidado nesse programa como "elemento", recebendo
 Elemento *criarElemento(int valor){
-	//alocando espaÁo pra um elemento usando a funÁ„o malloc
+	//alocando espa√ßo pra um elemento usando a fun√ß√£o malloc
 	Elemento *criado = (struct Elemento*)malloc(sizeof(struct Elemento));
-	// o valor desse nodo È passado pelo usu·rio e n„o referencia nenhum outro nodo
+	// o valor desse nodo √© passado pelo usu√°rio e n√£o referencia nenhum outro nodo
 	criado->valor = valor;
 	criado->proximo = NULL;
-	// por fim esse nodo È retornado para a parte do cÛdigo na qual foi chamado
+	// por fim esse nodo √© retornado para a parte do c√≥digo na qual foi chamado
 	return criado;
 }
 
-// funÁ„o que imprime na tela a lista nesse formado: [1, 2, 3, 4]
+// fun√ß√£o que imprime na tela a lista nesse formado: [1, 2, 3, 4]
 void imprimeLista (Elemento *inicial){
 	Elemento *temp;
 	
-	// se a funÁ„o estiver vazia, imprime "[]" e finalize a funÁ„o
+	// se a fun√ß√£o estiver vazia, imprime "[]" e finalize a fun√ß√£o
 	if(inicial == NULL){
 		printf("[]");
 		return;
 	}
 	
-	// trecho de cÛdigo que percorre a lista imprimindo seus elementos um por um.	
+	// trecho de c√≥digo que percorre a lista imprimindo seus elementos um por um.	
 	printf("[");
 	for(temp = inicial; temp->proximo != NULL; temp = temp->proximo){
 		printf("%i, ", temp->valor);
